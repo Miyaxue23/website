@@ -40,5 +40,16 @@ export const chainInfo = {
       decimals: 18
     },
     blockExplorerUrls: ['https://bscscan.com']
+  },
+  204: {
+    chainId: '0x' + Number(204).toString(16),
+    chainName: 'opBNB',
+    rpcUrls: ['https://opbnb-mainnet-rpc.bnbchain.org'],
+    nativeCurrency: {
+      name: 'BNB Coin',
+      symbol: 'BNB',
+      decimals: 18
+    }
+    // blockExplorerUrls: [],
   }
 }

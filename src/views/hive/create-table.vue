@@ -66,7 +66,11 @@ const getList = async () => {
   }
 }
 const handleOpen = (storageName: string) => {
-  window.open('https://hive-storage.4everland.app/#/' + storageName + '/home')
+  if (process.env.NODE_ENV == 'production') {
+    window.open('https://honey.4everland.app/#/' + storageName + '/home')
+  } else {
+    window.open('https://hive-storage.4everland.app/#/' + storageName + '/home')
+  }
 }
 getList()
 </script>

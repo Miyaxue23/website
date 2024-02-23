@@ -5,26 +5,20 @@ import { Client, PermissionTypes } from '@bnb-chain/greenfield-js-sdk'
 import { MsgGroupMember } from '@bnb-chain/greenfield-cosmos-types/greenfield/storage/tx'
 import { getOffchainAuthKeys } from './utils'
 import { ReedSolomon } from '@bnb-chain/reed-solomon'
-import { formatEther, parseEther } from 'ethers'
+import { formatEther } from 'ethers'
 export const client = Client.create(GRPC_URL as string, GREEN_CHAIN_ID.toString(), {
   zkCryptoUrl: 'https://unpkg.com/@bnb-chain/greenfield-zk-crypto@0.0.3/dist/node/zk-crypto.wasm'
 })
-// export const getSps = async () => {
-//   const sps = await client.sp.getStorageProviders()
-//   console.log(sps, 'sps')
-
-//   console.log(import.meta.env.VITE_PROVIDER_STORAGE_ADDR.toLocaleUpperCase())
-//   const finalSps = (sps ?? []).filter(
-//     (v) =>
-//       v.operatorAddress.toLocaleUpperCase() ==
-//       import.meta.env.VITE_PROVIDER_STORAGE_ADDR.toLocaleUpperCase()
-//   )
-//   return finalSps
-// }
 
 export const getSps = async () => {
   const sps = await client.sp.getStorageProviders()
-  const finalSps = (sps ?? []).filter((v) => v.endpoint == 'https://gnfd-sp.4everland.org')
+
+  const finalSps = (sps ?? []).filter(
+    (v) =>
+      v.operatorAddress.toLocaleLowerCase() ==
+      import.meta.env.VITE_PROVIDER_STORAGE_ADDR.toLocaleLowerCase()
+  )
+
   return finalSps
 }
 

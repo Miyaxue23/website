@@ -29,7 +29,7 @@
               >
                 <div class="al-c">
                   <img src="../assets/img/live.svg" width="24" />
-                  <span class="ml-2">My Live</span>
+                  <span class="ml-2">My Hive</span>
                 </div>
                 <img src="../assets/img/right-arrow.svg" width="24" />
               </div>

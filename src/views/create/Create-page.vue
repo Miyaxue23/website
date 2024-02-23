@@ -17,10 +17,26 @@
 </template>
 
 <script setup lang="ts">
-import stepOne from '@/components/step-one.vue'
-import stepTwo from '@/components/step-two.vue'
-import stepThree from '@/components/step-three.vue'
-import { computed, ref } from 'vue'
+// import stepOne from '@/components/step-one.vue'
+// import stepTwo from '@/components/step-two.vue'
+// import stepThree from '@/components/step-three.vue'
+import stepLoading from '@/components/step-loading.vue'
+const stepOne = defineAsyncComponent({
+  loader: () => import('@/components/step-one.vue'),
+  loadingComponent: stepLoading,
+  delay: 0
+})
+const stepTwo = defineAsyncComponent({
+  loader: () => import('@/components/step-two.vue'),
+  loadingComponent: stepLoading,
+  delay: 0
+})
+const stepThree = defineAsyncComponent({
+  loader: () => import('@/components/step-three.vue'),
+  loadingComponent: stepLoading,
+  delay: 0
+})
+import { computed, ref, defineAsyncComponent } from 'vue'
 const curIdx = ref(1)
 
 const curCpm = computed(() => {

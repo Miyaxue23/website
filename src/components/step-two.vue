@@ -44,7 +44,7 @@
         <input type="text" value="4everland | 0x5798...3366" disabled placeholder="https://" />
         <div class="mt-2 mb-1">Payment account</div>
         <input type="text" :value="store.state.address" disabled placeholder="https://" />
-        <div class="mt-2 mb-1">Monthly downloat quota</div>
+        <div class="mt-2 mb-1">Monthly download quota</div>
         <input type="text" value="10 GB/Month" disabled placeholder="https://" />
 
         <div class="fz-14 mt-5">Owner Account balance: {{ displayBalance }} BNB</div>
@@ -85,7 +85,7 @@ const inputError = ref(false)
 const accountBalance = ref(0)
 
 const disabled = computed(() => {
-  return inputError.value || accountBalance.value == 0
+  return inputError.value
 })
 const displayBalance = computed(() => {
   if (accountBalance.value == 0) return '0'
@@ -114,7 +114,9 @@ const handleNext = async () => {
   loading.value = true
   try {
     await store.dispatch('switchNetwork', import.meta.env.VITE_GREEN_CHAIN_ID)
-
+    if (accountBalance.value == 0) {
+      throw new Error('balance not enough')
+    }
     if (/^[0-9a-z\-]{3,50}$/.test(storageName.value)) {
       let addrss = getAddress(store.state.address)
       await createBucket(addrss, storageName.value)

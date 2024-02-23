@@ -4,11 +4,11 @@
       <div class="hive-title mb-4">Because of a favorite a hive， I met a group of people.</div>
       <div class="hive-description">
         A new social model, an innovative co-building model, profitable contributions, and a
-        tradable hive. a
+        tradable hive.
       </div>
       <div class="al-c create-btn" @click="router.push('/create')">
         <img src="../assets/img/create.svg" width="32" alt="" />
-        <span class="ml-2 fw-b"> Create a hive </span>
+        <span class="ml-2 fw-b"> Create A Hive </span>
       </div>
     </div>
   </div>
@@ -41,8 +41,8 @@ const router = useRouter()
       letter-spacing: -0.48px;
     }
     .create-btn {
+      display: inline-flex;
       margin-top: 32px;
-      width: 191px;
       padding: 16px 24px;
       box-sizing: border-box;
       border-radius: 8px;
